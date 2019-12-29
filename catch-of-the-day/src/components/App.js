@@ -12,12 +12,12 @@ class App extends React.Component {
         fishes: {},
         order: {}
     };
-    
-    componentDidMount(){
+
+    componentDidMount() {
         const localStorageRef = localStorage.getItem(this.props.match.params.storeId);
 
-        if(localStorageRef){
-            this.setState({ order : JSON.parse(localStorageRef) });
+        if (localStorageRef) {
+            this.setState({ order: JSON.parse(localStorageRef) });
         }
 
         this.ref = base.syncState(`${this.props.match.params.storeId}/fishes`, {
@@ -25,15 +25,15 @@ class App extends React.Component {
             state: 'fishes'
         });
     }
-        
-        componentDidUpdate() {
-            localStorage.setItem(this.props.match.params.storeId, JSON.stringify(this.state.order));
-        }
-        
+
+    componentDidUpdate() {
+        localStorage.setItem(this.props.match.params.storeId, JSON.stringify(this.state.order));
+    }
+
     componentWillUnmount() {
         base.removeBinding(this.ref);
     }
-    
+
 
     //sjeti se price za bind, moras ili da bindujes metodu u konstruktoru ili da imas atribut kome dodijelis arrow function, problem sa this!!!
     addFish = fish => {
@@ -45,6 +45,21 @@ class App extends React.Component {
         this.setState({
             fishes: newFishes
         });
+    }
+
+    updateFish = (key, updatedFish) => {
+        //napravi kopiju stanje
+        const fishes = this.state.fishes;
+        //azuriraj ribu
+        fishes[key] = updatedFish;
+        //setuj state
+        this.setState({fishes: fishes});
+    }
+
+    deleteFish = key => {
+        const newFishes = this.state.fishes;
+        newFishes[key] = null;
+        this.setState({fishes: newFishes});
     }
 
     loadSampleFishes = () => {
@@ -60,6 +75,13 @@ class App extends React.Component {
         this.setState({ order: order });
     }
 
+    deleteOrder = key =>{
+        const newOrder = this.state.order;
+        console.log(key);
+        delete newOrder[key];
+        this.setState({order: newOrder});
+    }
+
     render() {
         return (
             <div className="catch-of-the-day">
@@ -71,8 +93,8 @@ class App extends React.Component {
                         )}
                     </ul>
                 </div>
-                <Order fishes={this.state.fishes} order={this.state.order}/>
-                <Inventory addFish={this.addFish} loadSampleFishes={this.loadSampleFishes} />
+                <Order deleteOrder={this.deleteOrder} fishes={this.state.fishes} order={this.state.order} />
+                <Inventory deleteFish={this.deleteFish} updateFish={this.updateFish} fishes={this.state.fishes} addFish={this.addFish} loadSampleFishes={this.loadSampleFishes} />
             </div>
         )
     }
