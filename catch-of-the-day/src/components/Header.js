@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // class Header extends React.Component {
 //     render() {
@@ -82,6 +83,10 @@ const Header = props =>(
         </header>
 
     );
+
+    Header.propTypes = {
+        tagline: PropTypes.string.isRequired
+    }
 
 //dakodje mozemo dekomponovati props objekat pa da direktno proslijedimo atribut, i onda ne pozivamo kao props jer smo uradili
 // dekompoziciju atributa

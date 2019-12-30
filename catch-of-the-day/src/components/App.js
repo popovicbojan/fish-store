@@ -3,6 +3,7 @@ import Header from './Header';
 import Inventory from './Inventory';
 import Order from './Order';
 import Fish from './Fish';
+import PropTypes from 'prop-types';
 import sampleFishes from '../sample-fishes';
 import base from '../base';
 
@@ -12,6 +13,10 @@ class App extends React.Component {
         fishes: {},
         order: {}
     };
+
+    static propTypes = {
+        match: PropTypes.object
+    }
 
     componentDidMount() {
         const localStorageRef = localStorage.getItem(this.props.match.params.storeId);
