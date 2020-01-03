@@ -99,7 +99,7 @@ class App extends React.Component {
                     </ul>
                 </div>
                 <Order deleteOrder={this.deleteOrder} fishes={this.state.fishes} order={this.state.order} />
-                <Inventory deleteFish={this.deleteFish} updateFish={this.updateFish} fishes={this.state.fishes} addFish={this.addFish} loadSampleFishes={this.loadSampleFishes} />
+                <Inventory storeId={this.props.match.params.storeId} deleteFish={this.deleteFish} updateFish={this.updateFish} fishes={this.state.fishes} addFish={this.addFish} loadSampleFishes={this.loadSampleFishes} />
             </div>
         )
     }
