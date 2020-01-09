@@ -16,7 +16,9 @@ First page contains input form where users enter name of the store they want to 
 
 Store owners can login by their Facebook account. If store doesn't have owner, first user that logins will be assigned as owner of the current store. <br>Store owners can create new store item, edit existing offer, or delete some items. 
 For each store owner can load initial items for their store.
-<br>Every created store is persisted in Firebase.
+## Technologies used
+<li>Frontend: React
+<li>Backend: Firebase
 <br>
 <br>
 <i>This project was created as part of Wes Bos online online course: <b>React For Beginners</b></i>
