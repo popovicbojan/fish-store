@@ -4,7 +4,7 @@ Small fish store app, where users can order fish from different stores. Only adm
 
 ## Start app from console
 Only prerequisite for running the app is Node.js 10+ version. 
-In command window from folder catch-of-the-day run command: <br><b>npm start</b><br>and app will run on local host:3000.
+In command window from folder catch-of-the-day run command: <br><b>npm start</b><br>and app will run on localhost:3000.
 
 ## App
 First page contains input form where users enter name of the store they want to visit. By default some random name is generated. By clicking visit store user is redirected to that store. 
